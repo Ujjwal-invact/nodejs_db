@@ -3,7 +3,7 @@ const path = require('path');
 const csvParser = require('csv-parser');
 const supabase = require('./config'); // Import Supabase client
 
-const CSV_FILE_PATH = path.join(__dirname, 'files/filtered_file2.csv');  // Update with your CSV filename
+const CSV_FILE_PATH = path.join(__dirname, 'files/processed_merged_output_2.csv');  // Update with your CSV filename
 const TABLE_NAME = 'leads_collection';  // Supabase table name
 
 // 🚀 Function to parse CSV and insert data into Supabase

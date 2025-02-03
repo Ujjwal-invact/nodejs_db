@@ -133,7 +133,7 @@ const updateIsConverted = async () => {
         // Step 2: Process in batches to avoid "Bad Request"
         const matchingLeads = new Set();
 
-        console.log('🔍 Checking for matches in db1 (leads_collection)...');
+        console.log('🔍 Checking for matches in db1 (leads_collection_2)...');
 
         for (let i = 0; i < emails.length; i += BATCH_SIZE) {
             const emailBatch = emails.slice(i, i + BATCH_SIZE);
@@ -141,7 +141,7 @@ const updateIsConverted = async () => {
             if (emailBatch.length === 0) continue; // Skip empty batch
 
             const { data, error } = await supabase
-                .from('leads_collection')
+                .from('leads_collection_2')
                 .select('id')
                 .in('email_id', emailBatch);
 
@@ -158,7 +158,7 @@ const updateIsConverted = async () => {
             if (phoneBatch.length === 0) continue; // Skip empty batch
 
             const { data, error } = await supabase
-                .from('leads_collection')
+                .from('leads_collection_2')
                 .select('id')
                 .in('phone_number', phoneBatch);
 
@@ -182,7 +182,7 @@ const updateIsConverted = async () => {
             const batch = leadIds.slice(i, i + BATCH_SIZE);
 
             const { error: updateError } = await supabase
-                .from('leads_collection')
+                .from('leads_collection_2')
                 .update({ is_converted: true })
                 .in('id', batch);
 
