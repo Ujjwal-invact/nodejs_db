@@ -1,4 +1,4 @@
-const supabase = require('./config'); // Import Supabase client
+const supabase = require('../config/config'); // Import Supabase client
 
 const TABLE_NAME = 'leads_collection';  // Supabase table name
 

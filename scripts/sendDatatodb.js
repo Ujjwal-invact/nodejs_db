@@ -1,10 +1,23 @@
+/**
+ * This send csv data to the dedicated table 
+ * Only use for send email list data from nportal to leads_collection or similar kind of table
+ */
+
+/**
+ * This script reads a CSV file, processes its data, and uploads it to a Supabase table.
+ * - Parses the CSV file and cleans the data by handling empty values and formatting fields correctly.
+ * - Converts specific columns to appropriate data types (e.g., integers, lowercase emails).
+ * - Uploads data to Supabase in batches to avoid rate limits.
+ * - Provides error handling and logging for debugging and tracking progress.
+ */
+
 const fs = require('fs');
 const path = require('path');
 const csvParser = require('csv-parser');
-const supabase = require('./config'); // Import Supabase client
+const supabase = require('../config/config'); // Import Supabase client
 
-const CSV_FILE_PATH = path.join(__dirname, 'files/processed_merged_output_2.csv');  // Update with your CSV filename
-const TABLE_NAME = 'leads_collection';  // Supabase table name
+const CSV_FILE_PATH = path.join(__dirname, 'files/csv.csv');  // Update with your CSV filename
+const TABLE_NAME = 'email_logs';  // Supabase table name
 
 // 🚀 Function to parse CSV and insert data into Supabase
 const uploadCsvToSupabase = async () => {
@@ -74,31 +87,3 @@ uploadCsvToSupabase();
 
 
 
-// const fetch_record = async()=>{
-//     try {
-//         const { data, error } = await supabase
-//             .from(TABLE_NAME)
-//             .select({where :{email_id : 'rahul@invact.com'}});
-//             console.log(data)
-//         // if (error) {
-//         //     console.error(`⚠️ Error inserting batch ${i / batchSize + 1}:`, error.message);
-//         // } else {
-//         //     console.log(`✅ Successfully inserted ${batch.length} records (Batch ${i / batchSize + 1})`);
-//         // }
-//     } catch (error) {
-//         // console.error(`❌ Unexpected error in batch ${i / batchSize + 1}:`, error.message);
-//     }
-
-// }
-
-// fetch_record();
-
-// (async () => {
-//     const { data, error } = await supabase.from('leads_collection').select('*');
-    
-//     if (error) {
-//         console.error('Error:', error);
-//     } else {
-//         console.log('Data:', data);
-//     }
-// })();
