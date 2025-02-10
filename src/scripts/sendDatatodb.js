@@ -16,8 +16,8 @@ const path = require('path');
 const csvParser = require('csv-parser');
 const supabase = require('../config/config'); // Import Supabase client
 
-const CSV_FILE_PATH = path.join(__dirname, 'files/csv.csv');  // Update with your CSV filename
-const TABLE_NAME = 'email_logs';  // Supabase table name
+const CSV_FILE_PATH = path.join(__dirname, '../../src/files/csvs/Updated_N_Portal_Data.csv');  // Update with your CSV filename
+const TABLE_NAME = 'leads_collection_google_form';  // Supabase table name
 
 // 🚀 Function to parse CSV and insert data into Supabase
 const uploadCsvToSupabase = async () => {

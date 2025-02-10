@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const supabase = require('../config/config'); // Import Supabase client
 
-const JSON_FILE_PATH = path.join(__dirname, './files/leads.json'); // Update file path
+const JSON_FILE_PATH = path.join(__dirname, '../files/jsons/leads.json'); // Update file path
 const TABLE_NAME = 'leads_collection'; // Supabase table name
 
 // 🚀 Function to Read JSON and Insert into Supabase

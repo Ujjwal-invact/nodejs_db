@@ -1,8 +1,8 @@
 //Mark is_converted comuln as true is the email or phone is present in students table of prod-database
 /**
- * This script updates the `is_converted` field in db1 (leads_collection_2) based on matching records from db2 (students).
+ * This script updates the `is_converted` field in db1 (leads_collection_google_form) based on matching records from db2 (students).
  * - Fetches all email and phone numbers from the read-only `students` table in db2.
- * - Searches for matches in db1 (leads_collection_2) using emails and phone numbers.
+ * - Searches for matches in db1 (leads_collection_google_form) using emails and phone numbers.
  * - Updates the `is_converted` flag to `true` for all matching records in db1.
  * - Processes data in batches to prevent API errors and handle large datasets efficiently.
  * - Implements error handling and logging for better monitoring.
@@ -13,7 +13,7 @@
 const supabase = require('../config/config');  // db1 (Read & Write)
 const pool = require('../config/pgConfig');    // db2 (Read-Only)
 
-const BATCH_SIZE = 500; // Reduce batch size to prevent API errors
+const BATCH_SIZE = 50; // Reduce batch size to prevent API errors
 
 const updateIsConverted = async () => {
     try {
@@ -36,7 +36,7 @@ const updateIsConverted = async () => {
         // Step 2: Process in batches to avoid "Bad Request"
         const matchingLeads = new Set();
 
-        console.log('🔍 Checking for matches in db1 (leads_collection_2)...');
+        console.log('🔍 Checking for matches in db1 (leads_collection_google_form)...');
 
         for (let i = 0; i < emails.length; i += BATCH_SIZE) {
             const emailBatch = emails.slice(i, i + BATCH_SIZE);
@@ -44,7 +44,7 @@ const updateIsConverted = async () => {
             if (emailBatch.length === 0) continue; // Skip empty batch
 
             const { data, error } = await supabase
-                .from('leads_collection_2')
+                .from('leads_collection_google_form')
                 .select('id')
                 .in('email_id', emailBatch);
 
@@ -61,7 +61,7 @@ const updateIsConverted = async () => {
             if (phoneBatch.length === 0) continue; // Skip empty batch
 
             const { data, error } = await supabase
-                .from('leads_collection_2')
+                .from('leads_collection_google_form')
                 .select('id')
                 .in('phone_number', phoneBatch);
 
@@ -85,7 +85,7 @@ const updateIsConverted = async () => {
             const batch = leadIds.slice(i, i + BATCH_SIZE);
 
             const { error: updateError } = await supabase
-                .from('leads_collection_2')
+                .from('leads_collection_google_form')
                 .update({ is_converted: true })
                 .in('id', batch);
 
