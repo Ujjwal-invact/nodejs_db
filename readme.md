@@ -7,7 +7,7 @@ This project facilitates seamless data transfer and processing between databases
 ## Table of Contents
 
 - [Project Structure](#project-structure)
-- [Documentation](#-documentation)
+- [Documentation](#documentation)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Configuration](#configuration)
@@ -26,16 +26,13 @@ nodejs_db/
 ├── src/                 # Application source code
 │   ├── scripts/         # Contains various data processing scripts
 │   │   ├── IHD_nudge.js
-│   │   ├── cleancsv.js
 │   │   ├── db1todb2.js
-│   │   ├── deleteDuplicates.js
-│   │   ├── jsonimage.js
 │   │   ├── kxdaNudges.js
 │   │   ├── mydbtodatamart.js
-│   │   ├── sendDatatodb.js
-│   │   ├── sendJsonCsvFiles.js
 │   │   ├── test.js
-│   │   ├── updateLeads.js
+│   │   ├── updateIsConverted.js
+│   │   ├── uploadCsvToSupabase.js
+│   │   ├── uploadJsonToSupabase.js
 ├── .env.example         # Example environment configuration file
 ├── .gitignore           # Git ignored files
 ├── .prettierignore      # Prettier ignored files
@@ -47,7 +44,7 @@ nodejs_db/
 
 ---
 
-## 📚 Documentation
+## 📚 **Documentation**
 
 For additional resources and setup guides, refer to:
 
@@ -102,7 +99,7 @@ npm install
 npm start
 ```
 
-The application will run on `http://localhost:8000` (default port).
+The application will run on `http://localhost:3000` (default port).
 
 ### 2. Running in Development Mode
 
@@ -120,40 +117,30 @@ npm run dev
 - Sends automated nudges (email reminders) using **PostgreSQL** and **Axios** for API calls.
 - Uses **IHDEmailTemplate** to format email content.
 
-### **2️⃣ cleancsv.js**
-- Reads a CSV file and cleans the data.
-- Uses **Papaparse** to parse the CSV file while skipping empty lines.
-
-### **3️⃣ db1todb2.js**
+### **2️⃣ db1todb2.js**
 - Transfers data from `db1.leads_collection_2` to `db2.leads_collection` in batches using PostgreSQL.
+- Used to transfer data from a personal database to a data-mart database.
 
-### **4️⃣ deleteDuplicates.js**
-- Identifies and removes duplicate entries from **Supabase** table `leads_collection`.
-
-### **5️⃣ jsonimage.js**
-- Generates images from JSON data using **Canvas** and **Node.js**.
-- Reads input from a PostgreSQL database.
-
-### **6️⃣ kxdaNudges.js**
+### **3️⃣ kxdaNudges.js**
 - Similar to `IHD_nudge.js` but uses **kxdaEmailTemplate**.
 - Sends email nudges with custom templates.
 
-### **7️⃣ mydbtodatamart.js**
+### **4️⃣ mydbtodatamart.js**
 - Transfers data from `db1.leads_collection_2` to a data mart database.
 
-### **8️⃣ sendDatatodb.js**
+### **5️⃣ test.js**
+- A simple script that logs PostgreSQL connection details from `.env` for debugging purposes.
+
+### **6️⃣ updateIsConverted.js**
+- Updates the `is_converted` column in `db1.leads_collection_google_form` based on matching email/phone from `students` table.
+
+### **7️⃣ uploadCsvToSupabase.js**
 - Reads a CSV file and uploads the data to **Supabase**.
 - Cleans and formats the data before insertion.
 
-### **9️⃣ sendJsonCsvFiles.js**
-- Reads data from `leads.json` and uploads it to **Supabase**.
+### **8️⃣ uploadJsonToSupabase.js**
+- Reads data from a JSON file and uploads it to **Supabase**.
 - Handles JSON parsing and formatting.
-
-### **🔟 test.js**
-- A simple script that logs PostgreSQL connection details from `.env`.
-
-### **1️⃣1️⃣ updateLeads.js**
-- Updates the `is_converted` column in `db1.leads_collection_google_form` based on matching email/phone from `students` table.
 
 ---
 
