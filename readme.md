@@ -6,15 +6,15 @@ This project facilitates seamless data transfer and processing between databases
 
 ## Table of Contents
 
-- [Project Structure](#project-structure)
-- [Documentation](#documentation)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [Scripts Overview](#scripts-overview)
-- [Contributing](#contributing)
-- [License](#license)
+- [Project Structure](#-project-structure)
+- [Documentation](#-documentation)
+- [Prerequisites](#-prerequisites)
+- [Installation](#-installation)
+- [Configuration](#-configuration)
+- [Usage](#-usage)
+- [Scripts Overview](#-scripts-overview)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ---
 
@@ -174,5 +174,6 @@ This project is licensed under the [MIT License](LICENSE).
 ## 📞 **Contact**
 
 For questions or discussions, feel free to reach out or open an issue.
+ujjwal@invact.com
 
 ---
