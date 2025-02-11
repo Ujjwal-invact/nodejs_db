@@ -1,5 +1,6 @@
 // /**
 //  * This script transfers data from db1.leads_collection_2 to db2.leads_collection in batches using the pg package.
+//  * Was used to transfer data from my personal db to data-mart db
 //  */
 
 const { Client } = require('pg');
