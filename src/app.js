@@ -159,7 +159,7 @@ const executeQueryWithRetry = async (query, params, retries = 3) => {
 };
 
 // Allowed categories for processing
-const ALLOWED_CATEGORIES = new Set(["dev", "kxdaemail"]);
+const ALLOWED_CATEGORIES = new Set(["ihd", "kxdaemail"]);
 
 // Root route
 app.get("/", (req, res) => {

@@ -2,7 +2,7 @@ require('dotenv').config();
 const { Pool } = require('pg');
 const axios = require('axios');
 const fs = require('fs');
-const kxdaEmailTemplate = require('../constants/kxdaEmail');
+const IHDEmailTemplate = require('../constants/IHDemail');
 
 // Database connection using pg Pool
 const pool = new Pool({
@@ -14,18 +14,23 @@ const pool = new Pool({
 });
 
 // Global Variables
-// const WHERE_CLAUSE = `WHERE (is_converted = false AND nudge_1 IS NULL AND gender = 'Male' AND job_title = 'Data Analyst') OR email_id = 'ujjwal@invact.com'`;
-	// const WHERE_CLAUSE = `SELECT id, name, email_id, phone_number FROM leads_collection WHERE email_id ='ujjwaltandon50@gmail.com'`;
+
+// const WHERE_CLAUSE = `SELECT DISTINCT ON (email_id) id, name, email_id, phone_number
+// 						FROM leads_collection
+// 						WHERE email_id = 'ujjwaltandon50@gmail.com'`;
+
+
+
 const WHERE_CLAUSE = `SELECT DISTINCT ON (email_id) id, name, email_id, phone_number
 						FROM leads_collection
 						WHERE is_converted = false 
-						AND nudge_1 IS NULL
+						AND nudge_1 IS NULL AND gender = 'Female'
 						ORDER BY email_id, id`;
 
-const LIMIT = 10;
+const LIMIT = 500;
 const sendWATI = false; // Flag to control WATI sending
-const registrationLink = 'https://karmanx.com/data/webinar?utm_source=kxDaEmail&utm_medium=kxDaEmail&utm_campaign=kxDaEmail&utm_content=kxDaEmail';
-const sessionTime = '4 PM';
+const registrationLink = 'https://event.webinarjam.com/channel/ihd?utm_source=IHD_Email&utm_medium=IHD_Email&utm_campaign=IHD_Email&utm_content=IHD_Email';
+const sessionTime = '3:00 PM';
 const dynamicDate = new Date().toISOString().split('T')[0];
 
 // SendGrid API Configuration
@@ -40,7 +45,7 @@ const WATI_URL = 'https://live-mt-server.wati.io/115361/api/v1/sendTemplateMessa
 // Fetch leads
 async function fetchLeads() {
 	try {
-		const query = `${WHERE_CLAUSE}`;
+		const query = `${WHERE_CLAUSE} LIMIT $1`;
 		const { rows } = await pool.query(query, [LIMIT]);
         console.log(rows)
 		return rows;
@@ -55,15 +60,17 @@ async function sendEmail(lead) {
 	const emailData = {
 		personalizations: [{ to: [{ email: lead.email_id }] }],
 		from: { email: SENDER_EMAIL },
-		subject: 'Invitation to KarmanX Data Analyst Program Session',
+		subject: 'You have been selected for Invact Hiring Drive',
 		content: [
 			{
 				type: 'text/html',
-				value: kxdaEmailTemplate(lead.name, registrationLink)
+				value: IHDEmailTemplate(lead.name,sessionTime, registrationLink,dynamicDate)
+                // const IHDEmail =(name="", wj_time= "3:00 PM", wj_rej_link="https://event.webinarjam.com/channel/ihd",dynamicDate="Today") =>
+                    
 
 			},
 		],
-		categories : ['kxDaEmail']
+		categories : ['IHD']
 
 	};
 

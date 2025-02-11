@@ -3,68 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>You're Invited: Invact’s Hiring Drive</title>
 </head>
-<body style="margin: 0; padding: 0; background-color: #f0f4f8; font-family: 'Arial', sans-serif; color: #333;">
 
-  <div style="max-width: 600px; margin: 40px auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);">
-    
-    <!-- Header Section -->
-    <div style="background-color: #007bff; color: #ffffff; text-align: center; padding: 30px 20px;">
-      <h1 style="margin: 0; font-size: 28px; line-height: 1.4;">Reminder: KarmanX Data Analyst Webinar</h1>
-      <p style="margin: 10px 0 0; font-size: 16px;">Don’t Miss Your Chance!</p>
+<body style="margin: 0; padding: 0; background-color: #f4f6fc; font-family: 'Arial', sans-serif; color: #333;">
+
+    <!-- Main Container -->
+    <div style="max-width: 600px; margin: 40px auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);">
+        
+        <!-- Header Section -->
+        <div style="background: #007bff; padding: 20px; text-align: center; color: white;">
+            <h1 style="margin: 0; font-size: 24px;">🎯 Invact Hiring Drive</h1>
+            <p style="margin-top: 5px; font-size: 16px;">Your next big career opportunity!</p>
+        </div>
+
+        <!-- Content Section -->
+        <div style="padding: 30px; text-align: left;">
+
+            <p style="font-size: 18px; line-height: 1.6; margin-bottom: 15px;">
+                Hey <strong>${name}</strong>,
+            </p>
+
+            <p style="font-size: 18px; line-height: 1.6; margin-bottom: 20px;">
+                <strong>🎉 Congratulations!</strong><br>
+                You’ve been selected for <strong style="color: #007bff;">Invact’s Hiring Drive.</strong><br>
+                We’re looking for passionate individuals eager to kickstart their careers whether as freshers or returning after a break to work closely with our founder and product team.
+            </p>
+
+            <!-- Placement Session Details -->
+            <div style="background: #f8f9fc; padding: 20px; border-left: 5px solid #007bff; border-radius: 8px; margin-top: 20px;">
+                <h2 style="font-size: 20px; font-weight: bold; margin: 0 0 15px; color: #333;">📌 Placement Session Details</h2>
+                <p style="font-size: 16px; margin: 8px 0;"><strong>Date:</strong> ${dynamicDate}</p>
+                <p style="font-size: 16px; margin: 8px 0;"><strong>Time:</strong> ${wj_time}</p>
+
+                <!-- CTA Button inside Placement Details -->
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="${wj_rej_link}" target="_blank" 
+                       style="background: #007bff; color: #ffffff; text-decoration: none; padding: 12px 20px; 
+                              border-radius: 5px; font-size: 18px; font-weight: bold; display: inline-block;">
+                        🔗 Access the Placement Session
+                    </a>
+                </div>
+            </div>
+
+            <!-- Why Join? -->
+            <div style="margin-top: 30px; background: #f1f8ff; padding: 20px; border-radius: 8px; border-left: 5px solid #007bff;">
+                <h2 style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">🚀 Why You Should Attend</h2>
+                <ul style="padding-left: 20px; font-size: 16px; line-height: 1.6; color: #444;">
+                    <li>Exclusive opportunity to work closely with industry leaders</li>
+                    <li>Boost your career with hands-on experience</li>
+                    <li>Be part of a fast-growing, innovative team</li>
+                </ul>
+            </div>
+
+            <!-- Closing Note -->
+            <p style="font-size: 16px; margin-top: 30px;">
+                We look forward to seeing you at <strong>${wj_time}</strong>! Feel free to reach out if you have any questions.
+            </p>
+
+            <p style="font-size: 20px; font-weight: bold; color: #007bff; margin-top: 15px; text-align: center;">
+                Best wishes! 🎉
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div style="padding: 20px; text-align: center; background-color: #f9f9f9; border-top: 1px solid #ddd;">
+            <p style="font-size: 14px; color: #888; font-style: italic;">
+                ~ Team Invact
+            </p>
+        </div>
     </div>
-
-    <!-- Content Section -->
-    <div style="padding: 30px;">
-      <p style="font-size: 18px; line-height: 1.6; margin: 0 0 15px;">
-        Hello <strong>${name}</strong>,
-      </p>
-
-      <p style="font-size: 18px; line-height: 1.6; margin: 15px 0;">
-        This is a friendly reminder that our exclusive webinar <strong>“How to Crack Data Analyst Jobs”</strong> is happening soon!
-      </p>
-
-      <h2 style="font-size: 22px; color: #007bff; margin-top: 30px; font-weight: bold; text-align: center; text-transform: uppercase;">
-        Why You Should Attend
-      </h2>
-      <div style="margin: 20px 0; padding: 20px; background-color: #f9f9f9; border-left: 4px solid #007bff; border-radius: 8px;">
-        <ul style="font-size: 16px; margin: 0; padding: 0 20px; line-height: 1.8;">
-          <li>Gain insights from industry experts.</li>
-          <li>Learn strategies to land your first Data Analyst role.</li>
-          <li>Secure your spot in the KarmanX Data Analyst Program.</li>
-        </ul>
-      </div>
-
-      <!-- Registration Section -->
-      <div style="text-align: center; margin-top: 30px;">
-        <a href="${registrationLink}"
-          style="display: inline-block; background-color: #007bff; color: #ffffff; text-decoration: none; font-size: 16px; padding: 12px 20px; border-radius: 6px; font-weight: bold;">
-          Register Now Before It’s Too Late
-        </a>
-      </div>
-
-      <!-- Reminder Section -->
-      <p style="font-size: 16px; line-height: 1.6; margin: 30px 0 0; text-align: center;">
-        Seats are filling fast! Ensure your participation by registering today.
-      </p>
-      <p style="font-size: 16px; color: #555; line-height: 1.6; margin: 10px 0; text-align: center;">
-        <strong>Note:</strong> This is your last chance to be part of this exclusive event. Act now!
-      </p>
-    </div>
-
-    <!-- Footer Section -->
-    <div style="background-color: #f9f9f9; text-align: center; padding: 20px; border-top: 1px solid #ddd;">
-      <p style="font-size: 14px; color: #888; margin: 0; font-style: italic;">
-        Looking forward to seeing you there! <br>
-        <strong>~Team KarmanX</strong>
-      </p>
-    </div>
-
-  </div>
 
 </body>
-
-
-
 </html>
